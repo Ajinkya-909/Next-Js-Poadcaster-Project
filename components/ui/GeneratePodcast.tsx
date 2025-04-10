@@ -14,6 +14,7 @@ import {useUploadFiles} from '@xixixao/uploadstuff/react'
 import { voiceDetails } from '@/constants'
 
 const useGeneratePodcast = (props:GeneratePodcastProps)=>{
+   
     const [isGenerating, setisGenerating] = useState(false)
     const { toast } = useToast()
 
@@ -45,11 +46,11 @@ const useGeneratePodcast = (props:GeneratePodcastProps)=>{
             voice:voice_id?.id || '29vD33N1CtxCmqQRPOHJ',
             input:props.voicePrompt
            }) 
-           console.log(responce);
-
+           
            const blob = new Blob([responce],{type:'audio/mpeg'})
            const fileName = `podcast${uuidv4()}.mp3`
            const file = new File([blob], fileName,{type:'audio/mpeg'})
+
 
            const uploaded= await startUpload([file])
            const storageId= (uploaded[0].response as any).storageId
@@ -62,6 +63,7 @@ const useGeneratePodcast = (props:GeneratePodcastProps)=>{
            toast({
             title: "Podcast Generate Successfully",
           })
+         
         } catch (error) {
             toast({
                 title: "Error occured while Generating Podcast",
@@ -71,6 +73,7 @@ const useGeneratePodcast = (props:GeneratePodcastProps)=>{
             return setisGenerating(false)
             
         }
+
 
     }
 

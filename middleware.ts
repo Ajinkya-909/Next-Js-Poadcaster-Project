@@ -1,15 +1,20 @@
-import { Protect } from '@clerk/nextjs';
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+// Tutorial Code ---------------------------------------------------------------------------------------
 
-const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/'])
+// import { Protect } from '@clerk/nextjs';
+// import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-export default clerkMiddleware((auth, req) => {
-  if (!isPublicRoute(req)) auth.protect();
-});
+// const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/'])
 
-export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
-};
+// export default clerkMiddleware((auth, req) => {
+//   if (!isPublicRoute(req)) auth.protect();
+// });
+
+// export const config = {
+//   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+// };
+// -----------------------------------------------------------------------------------------------------
+
+//GPT CODE----------------------------------------------------------------------------------------------
 
 // import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 // import { NextResponse } from "next/server";
@@ -17,9 +22,9 @@ export const config = {
 // const isPublicRoute = createRouteMatcher(['/sign-in', '/sign-up', '/']);
 
 // export default clerkMiddleware(async (auth, req) => {
-//   console.log(req.headers.get('__clerk_db_jwt'))
+  //   console.log(req.headers.get('__clerk_db_jwt'))
 //   if (!isPublicRoute(req)) {
-//     const signInUrl = new URL('/sign-in', req.url);
+  //     const signInUrl = new URL('/sign-in', req.url);
 //     return NextResponse.redirect(signInUrl);
 //   }
 
@@ -27,5 +32,28 @@ export const config = {
 // });
 
 // export const config = {
-//   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
-// };
+  //   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+  // };
+  // -----------------------------------------------------------------------------------------------------
+  
+  import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import { log } from 'node:console'
+
+export function middleware(request: NextRequest) {
+  const protectedRoutes = !['/', '/sign-in', '/sign-up'].includes(request.nextUrl.pathname)
+
+  // Assuming token is stored in cookies
+  const token = request.cookies.get('__clerk_db_jwt')?.value
+
+  if (protectedRoutes && !token ) {
+    return NextResponse.redirect(new URL('/sign-in', request.url))
+  }
+
+  return NextResponse.next()
+}
+
+// Specify paths where this middleware should run
+export const config = {
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+}
