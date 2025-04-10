@@ -54,7 +54,7 @@ const CreatePodcast=()=> {
   const [isSubmitting, setisSubmitting] = useState(false)
 
 
-  const voiceCatogries =["alloy","shimmer","nova","echo","fable","onyx"];
+  const voiceCatogries =["rachel","drew","thomas","dave","lily","arnold"];
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
@@ -68,7 +68,6 @@ const CreatePodcast=()=> {
     function onSubmit(values: z.infer<typeof formSchema>) {
       // Do something with the form values.
       // ✅ This will be type-safe and validated.
-      console.log(values)
     }
   return (
     <section className="mt-10 flex flex-col">
@@ -107,11 +106,11 @@ const CreatePodcast=()=> {
 
               )})}
             </SelectContent>
-            {
+            {/* {
               voiceType && (
                 <audio src={`${voiceType}.mp3`} className="hidden" autoPlay/>
               )
-            }
+            } */}
           </Select>
 
 
@@ -134,7 +133,7 @@ const CreatePodcast=()=> {
 
         <div className="flex flex-col pt-10">
           <GeneratePodcast
-          setAudioStorageId={audioStorageId}
+          setAudioStorageId={setaudioStorageId}
           setAudio={setaudioUrl}
           voiceType={voiceType!}
           audio={audioUrl}

@@ -11,6 +11,7 @@ import { api } from '@/convex/_generated/api'
 import {v4 as uuidv4} from 'uuid'
 import { generateUploadUrl } from '@/convex/files'
 import {useUploadFiles} from '@xixixao/uploadstuff/react'
+import { voiceDetails } from '@/constants'
 
 const useGeneratePodcast = (props:GeneratePodcastProps)=>{
     const [isGenerating, setisGenerating] = useState(false)
@@ -35,10 +36,16 @@ const useGeneratePodcast = (props:GeneratePodcastProps)=>{
         }
         
         try {
+//getting voice name and giving voice Id
+            const voice_name= props.voiceType
+
+            const voice_id = voiceDetails.find((obj)=>{ return obj.name.toLowerCase() === voice_name.toLowerCase();})
+
            const responce = await getPodcastAudio({
-            voice:props.voiceType,
+            voice:voice_id?.id || '29vD33N1CtxCmqQRPOHJ',
             input:props.voicePrompt
            }) 
+           console.log(responce);
 
            const blob = new Blob([responce],{type:'audio/mpeg'})
            const fileName = `podcast${uuidv4()}.mp3`
