@@ -18,7 +18,7 @@ export const generateAudioAction = action({
         },
         body: JSON.stringify({
           text: input,
-          model_id: "eleven_monolingual_v2", // or "eleven_multilingual_v2"
+          model_id: "eleven_monolingual_v1", // or "eleven_multilingual_v2"
           voice_settings: {
             stability: 0.5,
             similarity_boost: 0.5
@@ -27,7 +27,16 @@ export const generateAudioAction = action({
       }
     );
 
+    if (!response.ok) {
+      const errorText = await response.text(); // for logging/debugging
+      throw new Error(`ElevenLabs API Error: ${response.status} - ${errorText}`);
+    }
+
     const arrayBuffer = await response.arrayBuffer();
+
+    if (arrayBuffer.byteLength === 0) {
+      throw new Error("Received empty audio data");
+    }
     return arrayBuffer;
   },
 });

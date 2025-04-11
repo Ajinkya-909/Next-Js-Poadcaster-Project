@@ -54,7 +54,7 @@ const CreatePodcast=()=> {
   const [isSubmitting, setisSubmitting] = useState(false)
 
 
-  const voiceCatogries =["rachel","drew","thomas","dave","lily","arnold"];
+  const voiceCatogries =["jessica","kal","bill","rachel","drew","thomas","dave","lily","arnold"];
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
@@ -106,11 +106,11 @@ const CreatePodcast=()=> {
 
               )})}
             </SelectContent>
-            {/* {
+            {
               voiceType && (
-                <audio src={`${voiceType}.mp3`} className="hidden" autoPlay/>
+                <audio src={`AI-${voiceType}.mp3`} className="hidden" autoPlay/>
               )
-            } */}
+            }
           </Select>
 
 
@@ -145,7 +145,7 @@ const CreatePodcast=()=> {
           <GenerateThumbnail/>
 
           <div className="mt-10 w-full">
-            <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">
+            <Button type="submit" className={`text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1 ${isSubmitting?('pointer-events-none'):""}`}>
               {isSubmitting?
               (<>
               Submitting
@@ -153,6 +153,11 @@ const CreatePodcast=()=> {
               </>) :
               (<>Submit & Publish</>)}
             </Button>
+            {isSubmitting?(
+              <div className="flex justify-center">
+                <p className="mx-auto rounded-lg p-4 mt-2 text-slate-400 text-center"> (This might take a while please wait) </p>
+              </div>
+            ):""}
           </div>
 
         </div>

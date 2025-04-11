@@ -41,6 +41,18 @@ export const SidebarLinks = [
       id: "VR6AewLTigWG4xSOukaG",
       name: "arnold",
     },
+    {
+      id: "68RUZBDjLe2YBQvv8zFx",
+      name: "kal",
+    },
+    {
+      id: "lxYfHSkYm1EzQzGhdbfc",
+      name: "jessica",
+    },
+    {
+      id: "lxYfHSkYm1EzQzGhdbfc",
+      name: "bill",
+    },
   ];
   
   export const podcastData = [

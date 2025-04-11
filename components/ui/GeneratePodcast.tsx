@@ -48,6 +48,14 @@ const useGeneratePodcast = (props:GeneratePodcastProps)=>{
            }) 
            
            const blob = new Blob([responce],{type:'audio/mpeg'})
+
+            if (blob.size === 0) {
+            toast({ title: "Audio generation failed. Empty file returned.", variant: "destructive" });
+            setisGenerating(false);
+            return;
+            }
+
+
            const fileName = `podcast${uuidv4()}.mp3`
            const file = new File([blob], fileName,{type:'audio/mpeg'})
 
@@ -101,9 +109,9 @@ function GeneratePodcast(props:GeneratePodcastProps) {
             />
         </div>
 
-        <div className='mt-5 w-full max-w-[200px] '>
+        <div className='mt-5 w-full flex justify-around items-center '>
 
-        <Button onClick={generatePodcast} type="submit" className="text-16 bg-orange-1 py-4 font-bold text-white-1 ">
+        <Button onClick={generatePodcast} type="submit" className={`text-16 bg-orange-1 py-4 font-bold text-white-1 ${isGenerating?('pointer-events-none'):''}`}>
               {isGenerating?
               (<>
               Generating
@@ -111,7 +119,15 @@ function GeneratePodcast(props:GeneratePodcastProps) {
               </>) :
               (<>Generate & Publish</>)}
             </Button>
-
+            {isGenerating?(
+                <div className="flex justify-center items-center">
+                    <p className="mx-auto rounded-lg p-4 mt-2 text-slate-400 text-center"> (This might take a while please wait) </p>
+                </div>
+                ):(
+                <div className="flex justify-center items-center">
+                    <p className="mx-auto rounded-lg p-4 mt-2 text-slate-400 text-center"> (Remember to Generate an audio file before Submitting) </p>
+                </div>
+            )}
         </div>
 
         { props.audio && (
