@@ -1,9 +1,6 @@
 import { GeneratePodcastProps } from '@/types'
 import { useToast } from "@/hooks/use-toast"
 import React, { useState } from 'react'
-import { Label } from './label'
-import { Textarea } from './textarea'
-import { Button } from './button'
 import { Loader, Loader2 } from 'lucide-react'
 import { log } from 'console'
 import { useAction, useMutation } from 'convex/react'
@@ -12,6 +9,10 @@ import {v4 as uuidv4} from 'uuid'
 import { generateUploadUrl } from '@/convex/files'
 import {useUploadFiles} from '@xixixao/uploadstuff/react'
 import { voiceDetails } from '@/constants'
+
+import { Textarea } from './ui/textarea'
+import { Button } from './ui/button'
+import { Label } from '@radix-ui/react-label'
 
 const useGeneratePodcast = (props:GeneratePodcastProps)=>{
    

@@ -1,17 +1,17 @@
 import React, { use, useRef, useState } from 'react'
-import { Button } from './button'
+
 import { cn } from '@/lib/utils'
 import { Loader } from 'lucide-react'
-import { Label } from '@radix-ui/react-label'
-import { Textarea } from './textarea'
+
 import { GenerateThumbnailProps } from '@/types'
-import { Input } from './input'
+
 import Image from 'next/image'
 import { log } from 'console'
 import { useToast } from '@/hooks/use-toast'
 import { useMutation } from 'convex/react'
 import { useUploadFiles } from '@xixixao/uploadstuff/react'
 import { api } from '@/convex/_generated/api'
+import { Input } from './ui/input'
 
 const GenerateThumbnail = ({setImage,setImageStorageId,image,imagePrompt,setImagePrompt}:GenerateThumbnailProps) => {
   const [isImageLoading, setisImageLoading] = useState(false)

@@ -11,6 +11,10 @@ const nextConfig = {
         protocol:'https',
         hostname:"agile-cheetah-700.convex.cloud" 
       },
+      {
+        protocol:'https',
+        hostname:"img.clerk.com"
+      },
     ]
   },
 };

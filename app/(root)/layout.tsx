@@ -1,6 +1,6 @@
-import LeftSidebar from "@/components/ui/LeftSidebar";
-import MobileView from "@/components/ui/MobileView";
-import RightSidebar from "@/components/ui/RightSidebar";
+import LeftSidebar from "@/components/LeftSidebar";
+import MobileView from "@/components/MobileView";
+import RightSidebar from "@/components/RightSidebar";
 import Image from "next/image";
 import { Toaster } from "@/components/ui/toaster"
 
