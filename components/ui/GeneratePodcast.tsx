@@ -69,7 +69,7 @@ const useGeneratePodcast = (props:GeneratePodcastProps)=>{
            props.setAudio(audiourl!)
            setisGenerating(false)
            toast({
-            title: "Podcast Generate Successfully",
+            title: "Podcast Generated Successfully",
           })
          
         } catch (error) {
