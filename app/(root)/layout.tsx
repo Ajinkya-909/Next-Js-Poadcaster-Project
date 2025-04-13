@@ -3,6 +3,7 @@ import MobileView from "@/components/MobileView";
 import RightSidebar from "@/components/RightSidebar";
 import Image from "next/image";
 import { Toaster } from "@/components/ui/toaster"
+import PodcastPlayer from "@/components/PodcastPlayer";
 
 
 export default function RootLayout({
@@ -11,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-   <div className="relative flex flex-col">
+   <div className="relative flex flex-col bg-black-3">
     <main className="realtive flex bg-black-3">
     <LeftSidebar/>
     <section className="min-h-screen flex-1 flex-col px-4 sm:px-14">
@@ -30,6 +31,7 @@ export default function RootLayout({
     </section>
     <RightSidebar/>
     </main>
+    <PodcastPlayer/>
    </div>
   );
 }

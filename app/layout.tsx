@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ConvexClerkProvider from "./providers/ConvexClerkProvider";
-
+import ConvexClerkProvider from "../providers/ConvexClerkProvider";
+import AudioProvider from "@/providers/AudioProvider";
 
 
 
@@ -19,10 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+      <ConvexClerkProvider>
     <html lang="en">
+      <AudioProvider>
+
       <body >
-      <ConvexClerkProvider>{children}</ConvexClerkProvider>
+        {children}
       </body>
+      </AudioProvider>
     </html>
+      </ConvexClerkProvider>
   );
 }
