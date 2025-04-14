@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <AudioProvider>
 
-      <body >
+      <body>
         {children}
       </body>
       </AudioProvider>

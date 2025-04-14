@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎙️ Podcaster — AI Voice Podcast Generator
 
-## Getting Started
+Podcaster is an AI-powered podcast creation platform that allows users to generate, manage, and listen to podcasts using synthetic voices. Built with **Next.js**, it integrates modern third-party services like **Clerk** for authentication, **Convex** for backend logic, and **Eleven Labs** for lifelike AI voices.
 
-First, run the development server:
+> 🚀 This is my **first Next.js app** and my **first project using third-party services** like Clerk, Convex, and Eleven Labs — a milestone in my developer journey.
+
+---
+
+## 🌟 Features
+
+- 🔐 **Authentication** – Secure sign-up and login with [Clerk](https://clerk.dev)
+- ☁️ **Backend** – Real-time podcast storage and management using [Convex](https://convex.dev)
+- 🧠 **AI Voices** – Create podcasts using 7–8 AI voice models powered by [Eleven Labs](https://elevenlabs.io)
+- ➕➖ **Add/Delete Podcasts** – Manage your AI-generated podcasts with ease
+- 🖥️ **Responsive Design** – Works beautifully on mobile, tablet, and desktop
+- 🎧 **Interactive UI** – Smooth audio playback and dynamic podcast interface
+- 🛠️ **Clean Tech Stack** – Built using Tailwind CSS and modern React practices
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js
+- **Auth**: Clerk
+- **Backend**: Convex
+- **AI Voices**: Eleven Labs
+- **Styling**: Tailwind CSS
+
+---
+
+## 📦 Getting Started
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/Ajinkya-909/Ajinkya-909/Next-Js-Poadcaster-Project.git
+cd podcaster
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up environment variables
+touch .env.local
+
+CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_FRONTEND_API=your_clerk_frontend_api
+
+NEXT_PUBLIC_CONVEX_URL=your_convex_deployment_url
+
+ELEVENLABS_API_KEY=your_elevenlabs_api_key
+
+# 4. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
