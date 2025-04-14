@@ -28,9 +28,8 @@ export const createPodcast = mutation({
       .query("users")
       .filter((q) => q.eq(q.field("email"), identity.email))
       .collect();
-
     if (user.length === 0) {
-      throw new ConvexError("User not found");
+      throw new ConvexError("User (user.length=0) not found");
     }
 
     return await ctx.db.insert("podcasts", {
@@ -162,7 +161,7 @@ export const getPodcastBySearch = query({
     return await ctx.db
       .query("podcasts")
       .withSearchIndex("search_body", (q) =>
-        q.search("podcastDescription" || "podcastTitle", args.search)
+        q.search("podcastTitle", args.search)
       )
       .take(10);
   },

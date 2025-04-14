@@ -36,7 +36,11 @@ const LeftSidebar = () => {
     </nav>
     <SignedOut>
         <div className='flex-center wfull pb-14 max-lg:px:4 lg:pr-8'>
-           <Button className='text-16 text-white-1 bg-orange-1 font-semibold p-4 w-full'> <Link href={`/sign-in`}>Sign In</Link></Button>
+             <Link href={`/sign-in`}>
+           <Button className='text-16 text-white-1 bg-orange-1 font-semibold p-4 w-full'>
+           Sign In
+           </Button>
+           </Link>
         </div>
     </SignedOut>
     <SignedIn>
