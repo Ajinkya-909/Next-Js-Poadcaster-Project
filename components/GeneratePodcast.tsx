@@ -118,7 +118,7 @@ function GeneratePodcast(props:GeneratePodcastProps) {
               Generating
               <Loader size={20} className="animate-spin mr-2"/>
               </>) :
-              (<>Generate & Publish</>)}
+              (<>Generate</>)}
             </Button>
             {isGenerating?(
                 <div className="flex justify-center items-center">

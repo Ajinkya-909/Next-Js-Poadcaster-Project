@@ -25,7 +25,7 @@ function Home() {
               />
             ))
           ) : (
-            <p className="text-white-1">Loading...</p> // Show loader while waiting for data
+           ''
           )}
         </div>
       </section>

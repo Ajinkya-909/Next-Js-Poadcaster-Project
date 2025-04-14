@@ -6,7 +6,7 @@ import AudioProvider from "@/providers/AudioProvider";
 
 
 export const metadata: Metadata = {
-  title: "PoadCaster",
+  title: "PodCaster",
   description: "Generate Your Podcast",
   icons:{
     icon:'/icons/logo.svg'

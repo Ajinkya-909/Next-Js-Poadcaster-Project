@@ -10,7 +10,7 @@ const Header = ({headerTitle,TitleClassName}:{headerTitle?:string;TitleClassName
     <header>
       <div className='flex items-center justify-between'>
         {headerTitle?(
-          <h1 className={cn('text-18 font-bold text-white-1',TitleClassName)}>
+          <h1 className={cn('text-18 font-bold text-white-1 mb-4',TitleClassName)}>
             {headerTitle}
           </h1>
         ):(<div/>)}
