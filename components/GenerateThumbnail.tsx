@@ -82,7 +82,7 @@ const GenerateThumbnail = ({setImage,setImageStorageId,image,imagePrompt,setImag
             <Image src={'/icons/upload-image.svg'} width={30} height={40} alt='Upload'/>
           ):(
             <div className='text-16 flex-center font-medium text-white-1'>
-              Generating
+              Uploading...
               <Loader size={20} className="animate-spin mr-2"/>
             </div> 
           )}
