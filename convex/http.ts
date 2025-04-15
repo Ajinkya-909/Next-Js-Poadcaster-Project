@@ -14,13 +14,14 @@ const handleClerkWebhook = httpAction(async (ctx, request) => {
   if (!event) {
     return new Response("Invalid request", { status: 400 });
   }
+  console.log(event)
   switch (event.type) {
     case "user.created":
       await ctx.runMutation(internal.users.createUser, {
         clerkId: event.data.id,
         email: event.data.email_addresses[0].email_address,
         imageUrl: event.data.image_url,
-        name: event.data.first_name!,
+        name: event.data.first_name+' '+event.data.last_name!,
       });
       break;
     case "user.updated":
@@ -52,7 +53,7 @@ http.route({
 const validateRequest = async (
   req: Request
 ): Promise<WebhookEvent | undefined> => {
-  const webhookSecret = process.env.CLERK_WEBHOOK_SECRET!;
+  const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
   if (!webhookSecret) {
     throw new Error("process.env.CLERK_WEBHOOK_SECRET");
   }
